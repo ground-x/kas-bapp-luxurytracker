@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import queryString from "query-string";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
@@ -8,7 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles";
 import Receipt from "../components/Receipt";
 import ReceiptAdd from "../components/ReceiptAdd";
 
@@ -148,7 +147,7 @@ class ReceiptPage extends Component {
           <Receipt
             stateRefresh={this.stateRefresh}
             owner={c.owner}
-            sender={c.sender}
+            sender={c.previousOwner}
             tokenID={c.tokenId}
             tokenUri={c.tokenUri}
             createdAt={c.createdAt}

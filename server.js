@@ -8,6 +8,15 @@ const port = 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+const config = require('./client/src/Config.js');
+
+const accessKeyId = config.accessKeyId;
+const secretAccessKey = config.secretAccessKey;
+const authorization = config.authorization;
+
+const caver = config.caver;
+
 // app.get('/api/hello', (req, res) => {
 //     res.send({message: 'Hello Express!'});
 // })
@@ -56,17 +65,21 @@ app.get("/api/receipts/:id", (req, res) => {
     "SELECT * FROM TEST.PRODUCT WHERE isDeleted = 0 AND id = ?",
     req.params.id,
     async (err, rows, fields) => {
+      if (rows.length == 0) {
+        res.send("{}");
+        return;
+      }
+
       contractAddr = rows[0]["contractAddr"];
 
       var options = {
         method: "GET",
         url:
-          "https://th-api.beta.klaytn.io/v1/kct/nft/" + contractAddr + "/token",
+          "https://th-api.klaytnapi.com/v2/contract/nft/" + contractAddr + "/token",
         headers: {
-          "x-krn": "krn:1001:th",
+          "x-Chain-ID": 1001,
           "Content-Type": "application/json",
-          Authorization:
-            "Basic MjAxMzczYTQ3MTNmNWQ2ZjZkZDA0MDkwMzVkYmY4OWU3YTg5ZGRiMToyNTNjOGVjYjUyYzc5YThmZDg5NWJlYWRhOWU0NzFkZjdiZThkNDI5",
+          Authorization: authorization,
         },
       };
       request(options, function (error, response) {
@@ -312,30 +325,6 @@ app.delete("/api/products/:id", (req, res) => {
     res.send(rows);
   });
 });
-
-const accessKeyId = "YOU_NEED_TO_USE_YOUR_OWN_ACCESS_KEY_ID";
-const secretAccessKey = "YOU_NEED_TO_USE_YOUR_OWN_SECRET_ACCESS_KEY";
-
-const option = {
-  headers: [
-    {
-      name: "Authorization",
-      value:
-        "Basic " +
-        Buffer.from(accessKeyId + ":" + secretAccessKey).toString("base64"),
-    },
-    { name: "origin", value: "localhost" },
-    { name: "x-krn", value: "krn:1001:node" },
-  ],
-};
-
-const Caver = require("caver-js");
-const caver = new Caver(
-  new Caver.providers.HttpProvider(
-    "https://node-api.beta.klaytn.io/v1/klaytn",
-    option
-  )
-);
 
 app.get("/api/klay/blocknumber", async (req, res) => {
   bb = await getBlockNumber();
