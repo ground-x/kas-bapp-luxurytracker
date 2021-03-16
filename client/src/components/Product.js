@@ -2,10 +2,8 @@ import React from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Button from "@material-ui/core/Button";
-import ProductDelete from "./ProductDelete";
 import ProductDetail from "./ProductDetail";
 import { NavLink } from "react-router-dom";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
 
 class Product extends React.Component {
   handleClick = () => {
@@ -23,7 +21,7 @@ class Product extends React.Component {
     return (
       <TableRow>
         <TableCell>
-          <img src={this.props.image} />
+          <img src={this.props.image} alt="product_image"/>
         </TableCell>
         <TableCell>
           <ProductDetail

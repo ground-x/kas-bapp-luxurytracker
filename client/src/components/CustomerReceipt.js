@@ -1,10 +1,7 @@
 import React from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import ReceiptDelete from "./ReceiptDelete";
 import ReceiptSend from "./ReceiptSend";
-import AddressButton from "./AddressButton";
-import CustomerReceiptPage from "../pages/CustomerReceiptPage";
 import CustomerReceiptDetail from "./CustomerReceiptDetail";
 
 class CustomerReceipt extends React.Component {

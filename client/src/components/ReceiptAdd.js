@@ -16,30 +16,6 @@ const styles = (theme) => ({
   },
 });
 
-const accessKeyId = "YOU_NEED_TO_USE_YOUR_OWN_ACCESS_KEY_ID";
-const secretAccessKey = "YOU_NEED_TO_USE_YOUR_OWN_SECRET_ACCESS_KEY";
-
-const option = {
-  headers: [
-    {
-      name: "Authorization",
-      value:
-        "Basic " +
-        Buffer.from(accessKeyId + ":" + secretAccessKey).toString("base64"),
-    },
-    { name: "origin", value: "localhost" },
-    { name: "x-krn", value: "krn:1001:node" },
-  ],
-};
-
-const Caver = require("caver-js");
-const caver = new Caver(
-  new Caver.providers.HttpProvider(
-    "https://node-api.beta.klaytn.io/v1/klaytn",
-    option
-  )
-);
-
 class ReceiptAdd extends React.Component {
   constructor(props) {
     super(props);
@@ -124,7 +100,6 @@ class ReceiptAdd extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <Button

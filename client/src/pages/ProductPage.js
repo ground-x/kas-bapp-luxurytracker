@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import queryString from "query-string";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
@@ -7,15 +6,12 @@ import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles";
 import Product from "../components/Product";
 import ProductAdd from "../components/ProductAdd";
-import SellerLogin from "../components/SellerLogin";
-import { red } from "@material-ui/core/colors";
 
 const styles = (theme) => ({
   tableHead: {
@@ -29,7 +25,6 @@ const styles = (theme) => ({
   },
   root: {
     width: "100%",
-    //minWidth: 1080,
   },
   paper: {
     marginLeft: 18,
@@ -164,7 +159,7 @@ class ProductPage extends Component {
       });
     };
     const { classes } = this.props;
-    const productCells = ["이미지", "제품명", "영수증"];
+    const productCells = [{id: 1, title: "이미지"}, {id: 2, title: "제품명"}, {id: 3, title: "영수증"}];
     return (
       <Container className={classes.root}>
         {/* Seller#{localStorage.SellerID} - {localStorage.SellerPrivateKey}
@@ -176,9 +171,9 @@ class ProductPage extends Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                {productCells.map((c) => {
+                {productCells.map((c, index) => {
                   return (
-                    <TableCell className={classes.tableHead}>{c}</TableCell>
+                    <TableCell id={index} className={classes.tableHead}>{c.title}</TableCell>
                   );
                 })}
               </TableRow>

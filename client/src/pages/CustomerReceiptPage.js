@@ -7,7 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles";
 import CustomerReceipt from "../components/CustomerReceipt";
 
 const styles = (theme) => ({
@@ -158,7 +158,7 @@ class CustomerReceiptPage extends Component {
       });
     };
     const { classes } = this.props;
-    const productCells = ["제품명 (상세 정보)", "전송"];
+    const productCells = [{id: 1, title: "제품명 (상세 정보)"}, {id: 2, title: "전송"}];
     return (
       <div className={classes.root}>
         {/* <div className={classes.menu}>
@@ -169,9 +169,9 @@ class CustomerReceiptPage extends Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                {productCells.map((c) => {
+                {productCells.map((c, index) => {
                   return (
-                    <TableCell className={classes.tableHead}>{c}</TableCell>
+                    <TableCell id={index} className={classes.tableHead}>{c.title}</TableCell>
                   );
                 })}
               </TableRow>

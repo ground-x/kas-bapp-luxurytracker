@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Customer, Product, Receipt } from "../pages";
+import { Customer, Product } from "../pages";
 import Menu from "../components/Menu";
 import Box from "@material-ui/core/Box";
 

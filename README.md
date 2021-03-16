@@ -2,7 +2,7 @@
 
 고가의 명품을 중고 거래할 때 명품을 구입한 가게에서 받은 영수증도 같이 보여주는 일은 꽤 빈번합니다. 내가 산 명품이 "진짜"임을 증명하는 방법이기도 하고, 모조품을 구하는 것보다 가짜 영수증을 만드는 것이 어떻게보면 더 어렵기 때문입니다. 그런데, 이렇게 중고 거래를 하려면 처음 받은 영수증을 보관하고 있어야 하는데 영수증은 보관하기 어렵습니다. 작고 얇아서 잃어버리거나 찢어지거나 구거지기 쉽고, 감열지를 사용하므로 열이나 빛을 받으면 내용이 쉽게 지워집니다.
 
-따라서 블록체인에 명품 영수증을 보관한다면 영수증을 안전하게 영구적으로 보관하면서 이를 거래 시 자유롭게 활용할 수 있을 것입니다. 이 튜토리얼은 Ground X의 블록체인인 클레이튼상에서 영수증을 보관하고 전송하는 BApp(블록체인 애플리케이션) 에제를 소개합니다. 이 예제는 클레이튼의 [대체 불가 토큰]((http://wiki.hash.kr/index.php/%EB%8C%80%EC%B2%B4%EB%B6%88%EA%B0%80%ED%86%A0%ED%81%B0))(Non-fungible Token, NFT)인 [KIP-17](https://ko.docs.klaytn.com/smart-contract/token-standard#non-fungible-token-standard-kip-17)을 기반으로 전자 영수증을 발행해서 중고 거래에 사용하도록 합니다. 영수증은 클레이튼에 배포되므로 영수증 주인이 개인키를 잃어버리지 않는 한 클레이튼상에 계속 보관해둘 수 있습니다. 따라서 중고 거래를 할 때 새로운 주인에게 영수증을 안전하고 쉽게 전달할 수 있고, 새로운 주인이 명품을 재판매할 때에도 동일하게 다음 주인에게 영수증을 넘겨줄 수 있습니다.
+따라서 블록체인에 명품 영수증을 보관한다면 영수증을 안전하게 영구적으로 보관하면서 이를 거래 시 자유롭게 활용할 수 있을 것입니다. 이 튜토리얼은 Ground X의 블록체인인 클레이튼상에서 영수증을 보관하고 전송하는 BApp(블록체인 애플리케이션) 에제를 소개합니다. 이 예제는 클레이튼의 [대체 불가 토큰](http://wiki.hash.kr/index.php/%EB%8C%80%EC%B2%B4%EB%B6%88%EA%B0%80%ED%86%A0%ED%81%B0)(Non-fungible Token, NFT)인 [KIP-17](https://ko.docs.klaytn.com/smart-contract/token-standard#non-fungible-token-standard-kip-17)을 기반으로 전자 영수증을 발행해서 중고 거래에 사용하도록 합니다. 영수증은 클레이튼에 배포되므로 영수증 주인이 개인키를 잃어버리지 않는 한 클레이튼상에 계속 보관해둘 수 있습니다. 따라서 중고 거래를 할 때 새로운 주인에게 영수증을 안전하고 쉽게 전달할 수 있고, 새로운 주인이 명품을 재판매할 때에도 동일하게 다음 주인에게 영수증을 넘겨줄 수 있습니다.
 
 하나의 명품은 하나의 NFT(KIP-17) 스마트 컨트랙트를, 하나의 영수증은 하나의 NFT 토큰을 나타냅니다. 명품 브랜드마다, 혹은 브랜드를 판매하는 가게 수준에서 관리하는 기능을 추가할 수도 있으나, 이 튜토리얼에서는 하나의 가게만 존재하는 상황을 가정합니다.
 
@@ -97,20 +97,20 @@ npm install
 
 ### KAS 설정하기
 
-- 아래와 같은 코드들에 KAS Console을 통해 발급받은 accessKeyId와 secretAccessKey를 입력합니다.
+- `client/src/Config.js`에 KAS Console을 통해 발급받은 accessKeyId와 secretAccessKey를 입력합니다.
 
 ```js
-const accessKeyId = "YOU_NEED_TO_USE_YOUR_OWN_ACCESS_KEY_ID";
-const secretAccessKey = "YOU_NEED_TO_USE_YOUR_OWN_SECRET_ACCESS_KEY";
+const accessKeyId = "YOUR_ACCESS_KEY_ID_FROM_KAS_CONSOLE";
+const secretAccessKey = "YOUR_SECRET_ACCESS_KEY_FROM_KAS_CONSOLE";
 ```
 
 ### 실행하기
 
 - 루트 디렉토리에서 아래 명령어를 실행합니다. 아래 명령어로 백엔드 서버와 프론트엔드를 한 번에 실행시킬 수 있습니다. http://localhost:3000 에서 실행된 프로그램을 확인할 수 있습니다.
-(해당 포트가 이미 사용중인 경우 다른 포트 번호를 사용하십시오.)
+  (해당 포트가 이미 사용중인 경우 다른 포트 번호를 사용하십시오.)
 
 ```bash
 yarn dev
 ```
 
-이 문서 혹은 KAS에 관한 문의는 [개발자 포럼]()을 방문해 도움을 받으십시오.
+이 문서 혹은 KAS에 관한 문의는 [개발자 포럼](https://forum.klaytn.com/)을 방문해 도움을 받으십시오.

@@ -1,12 +1,7 @@
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
-import { DialogContentText } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ReceiptAdd from "./ReceiptAdd";
 import ProductDelete from "./ProductDelete";
@@ -19,7 +14,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
 
 const styles = (theme) => ({
   hidden: {
