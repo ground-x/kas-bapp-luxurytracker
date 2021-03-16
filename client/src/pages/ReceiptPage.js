@@ -158,13 +158,13 @@ class ReceiptPage extends Component {
     };
     const { classes } = this.props;
     const productCells = [
-      "소유자 주소",
-      "보낸 사람 주소",
-      "영수증 번호",
-      "영수증 정보",
-      "영수증 발행 시점",
-      "영수증 최종 업데이트",
-      "기타",
+      {id:1, title: "소유자 주소"},
+      {id:2, title: "보낸 사람 주소"},
+      {id:3, title: "영수증 번호"},
+      {id:4, title: "영수증 정보"},
+      {id:5, title: "영수증 발행 시점"},
+      {id:6, title: "영수증 최종 업데이트"},
+      {id:7, title: "기타"},
     ];
     return (
       <div className={classes.root}>
@@ -173,9 +173,9 @@ class ReceiptPage extends Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                {productCells.map((c) => {
+                {productCells.map((c, index) => {
                   return (
-                    <TableCell className={classes.tableHead}>{c}</TableCell>
+                    <TableCell id={index} className={classes.tableHead}>{c.title}</TableCell>
                   );
                 })}
               </TableRow>

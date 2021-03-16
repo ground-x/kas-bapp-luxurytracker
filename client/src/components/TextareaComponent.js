@@ -92,7 +92,7 @@ class TextareaComponent extends Component {
       this.handleScan(data);
       this.props.handleValueChangeQR({ target: { name: "qr", value: data } });
     } else {
-      alert("망했음");
+      alert("사용 가능한 QR 코드 이미지를 입력해주세요.");
     }
   };
 

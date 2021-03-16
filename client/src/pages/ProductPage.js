@@ -159,7 +159,7 @@ class ProductPage extends Component {
       });
     };
     const { classes } = this.props;
-    const productCells = ["이미지", "제품명", "영수증"];
+    const productCells = [{id: 1, title: "이미지"}, {id: 2, title: "제품명"}, {id: 3, title: "영수증"}];
     return (
       <Container className={classes.root}>
         {/* Seller#{localStorage.SellerID} - {localStorage.SellerPrivateKey}
@@ -171,9 +171,9 @@ class ProductPage extends Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                {productCells.map((c) => {
+                {productCells.map((c, index) => {
                   return (
-                    <TableCell className={classes.tableHead}>{c}</TableCell>
+                    <TableCell id={index} className={classes.tableHead}>{c.title}</TableCell>
                   );
                 })}
               </TableRow>

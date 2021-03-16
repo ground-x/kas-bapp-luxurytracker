@@ -158,7 +158,7 @@ class CustomerReceiptPage extends Component {
       });
     };
     const { classes } = this.props;
-    const productCells = ["제품명 (상세 정보)", "전송"];
+    const productCells = [{id: 1, title: "제품명 (상세 정보)"}, {id: 2, title: "전송"}];
     return (
       <div className={classes.root}>
         {/* <div className={classes.menu}>
@@ -169,9 +169,9 @@ class CustomerReceiptPage extends Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                {productCells.map((c) => {
+                {productCells.map((c, index) => {
                   return (
-                    <TableCell className={classes.tableHead}>{c}</TableCell>
+                    <TableCell id={index} className={classes.tableHead}>{c.title}</TableCell>
                   );
                 })}
               </TableRow>
